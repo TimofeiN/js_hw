@@ -24,8 +24,10 @@
   <script>
     "use strict";
 
-    const celsTmp = prompt('Введите температуру в градусах цельсия', '');
-    alert(`Цельсий: ${celsTmp}, Фаренгейт: ${((9 / 5) * celsTmp) + 32}`);
+    const celsTmp = +prompt('Введите температуру в градусах цельсия', '');
+    const farTmp = ((9 / 5) * celsTmp) + 32
+
+    alert(`Цельсий: ${celsTmp}, Фаренгейт: ${farTmp.toFixed(2)}`);
   </script>
 </body>
 

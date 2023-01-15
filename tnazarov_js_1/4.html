@@ -30,13 +30,12 @@
   <script>
     "use strict";
 
-    const userNum = prompt('Введите целое число', '');
+    const userNum = +prompt('Введите целое число', '');
     const ones = userNum % 10;
     const tens = Math.trunc(userNum % 100 / 10);
     const hundreds = Math.trunc(userNum % 1000 / 100);
-    alert(`В числе ${userNum} количество сотен: ${hundreds}, десятков: ${tens}, единиц: ${ones}`)
-
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+    alert(`В числе ${userNum} количество сотен: ${hundreds}, \
+десятков: ${tens}, единиц: ${ones}`);
   </script>
 </body>
 
