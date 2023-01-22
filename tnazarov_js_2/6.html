@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+
+<body>
+  <!--
+Необязательное задание.
+
+Необходимо реализовать функцию, которая будет принимать первым аргументом
+целое положительное число, в следующих трех аргументах функция принимает слова
+в разных склонениях.
+Функция должна возвращать одно из трех переданных в параметры слов подходящее
+под число, которое передано первым аргументом.
+
+Пример:
+console.log(declinationOfNumber(1, "яблоко", "яблока", "яблок")); // "яблоко"
+console.log(declinationOfNumber(2, "мяч", "мяча", "мячей")); // "мяча"
+console.log(declinationOfNumber(5, "стул", "стула", "стульев")); // "стульев"
+
+Функция должна работать с любым словом и любым целым положительным числом.
+Все аргументы, которые будут передаваться функции будут верны.
+-->
+  <script>
+    "use strict";
+
+    /**declinationOfNumber
+    * Получает слово в нужном склонении в зависимости от числа
+    * @param {int} count Число, которое возводится в степень.
+    * @param {string} one склонение для количества 1.
+    * @param {string} two склонение для количества 2.
+    * @param {string} five склонение для количества 5.
+    * @return {string} слово в нужном склонении.
+    */
+    function declinationOfNumber(count, one, two, five) {
+      let word = null;
+      const countTens = Math.trunc(count % 100 / 10);
+      const countOnes = Math.trunc(count % 10);
+
+      if (countTens === 1 && (countOnes >= 1 && countOnes <= 9)) {
+        word = five;
+      } else {
+        if (countOnes === 1) {
+          word = one;
+        }
+
+        if (countOnes >= 2 && countOnes <= 4) {
+          word = two;
+        }
+
+        if (countOnes === 0 || (countOnes >= 5 && countOnes <= 9)) {
+          word = five;
+        }
+      }
+      return word;
+    }
+
+    /**
+     * Функция проверки значения полученного от пользователя. Необходимо 
+     * получить целое положительное число. Иначе генерирует ошибку.
+     * @param {string} val Значение полученное от пользователя.
+     * @return {string} val Значение переданное пользователем, если оно 
+     * удовлетваряет условиям.
+     */
+    function checkNum(val) {
+      let num = Number(val);
+      if (isNaN(num) || ((num ^ 0) !== num) || num < 0) {
+        throw new Error('необходимо ввести целое положительное число');
+      } else {
+        return val;
+      }
+    }
+
+    // Число яблок(стульев, мячей).
+    const userNum = checkNum(+prompt('Count'));
+
+    // Получаем от функции слово в нужном склонении.
+    let wordsForm = declinationOfNumber(userNum, "стул", "стула", "стульев");
+    console.log(`У меня есть ${userNum} ${wordsForm}.`);
+
+    wordsForm = declinationOfNumber(userNum, "яблоко", "яблока", "яблок");
+    console.log(`У меня есть ${userNum} ${wordsForm}.`);
+
+    wordsForm = declinationOfNumber(userNum, "мяч", "мяча", "мячей");
+    console.log(`У меня есть ${userNum} ${wordsForm}.`);
+  </script>
+</body>
+
+</html>
