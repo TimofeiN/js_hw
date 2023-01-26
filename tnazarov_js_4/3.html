@@ -40,7 +40,7 @@
      * число сотен. Если передано некорректное число - возвращает пустой объект.
      */
     function getDigitsOfNumber(num) {
-      if (num < 0 || num > 999 || Number.isInteger(num) === false) {
+      if (num < 0 || num > 999 || !Number.isInteger(num)) {
         console.error(`Введено "${num}" необходимо целое число от 0 до 999`);
         return {};
       }

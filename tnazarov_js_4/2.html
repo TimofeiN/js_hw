@@ -56,12 +56,12 @@
     function PostES5(author, postText) {
       this.author = author;
       this.postText = postText;
-      this.editTime = new Date;
+      this.editTime = new Date();
     }
 
     PostES5.prototype.edit = function (text) {
       this.postText = text;
-      this.editTime = new Date;
+      this.editTime = new Date();
     };
 
     function AttachedPostES5(author, postText) {
@@ -74,6 +74,7 @@
 
     AttachedPostES5.prototype.makeTextHighlighted = function () {
       this.highlighted = true;
+      this.editTime = new Date();
     };
 
 
@@ -91,25 +92,24 @@
     }
 
     class AttachedPostES6 extends PostES6 {
-      constructor(author, postText) {
-        super(author, postText);
-        this.highlighted = false;
-      }
+      highlighted = false;
+
       makeTextHighlighted() {
         this.highlighted = true;
+        this.editTime = new Date();
       }
     }
 
-    // Проверки
-    const attPostES5 = new AttachedPostES5('ann', 'danknlq kmml');
-    const attPostES6 = new AttachedPostES6('tim', 'sdasd 3223');
-    console.log(attPostES5, attPostES6);
-    attPostES5.makeTextHighlighted();
-    attPostES6.makeTextHighlighted();
+    // // Проверки
+    // const attPostES5 = new AttachedPostES5('ann', 'danknlq kmml');
+    // const attPostES6 = new AttachedPostES6('tim', 'sdasd 3223');
+    // console.log(attPostES5, attPostES6);
+    // attPostES5.makeTextHighlighted();
+    // attPostES6.makeTextHighlighted();
 
-    attPostES5.edit('edited: danknlq kmml');
-    attPostES6.edit('edited: sdasd 3223');
-    console.log(attPostES5, attPostES6);
+    // attPostES5.edit('edited: danknlq kmml');
+    // attPostES6.edit('edited: sdasd 3223');
+    // console.log(attPostES5, attPostES6);
   </script>
 </body>
 
